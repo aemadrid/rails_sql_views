@@ -2,7 +2,7 @@ module RailsSqlViews
   module ConnectionAdapters
     module PostgreSQLAdapter
       def self.included(base)
-        base.alias_method_chain :tables, :views_included
+        base.alias_method_chain :tables, :views_included if base.respond_to?(:tables)
       end
       # Returns true as this adapter supports views.
       def supports_views?
